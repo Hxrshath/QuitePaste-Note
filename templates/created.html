@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151f">
+  <title>Your private link — QuietPaste</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell narrow">
+    <header class="topbar"><a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">Q</span> QuietPaste</a></header>
+    <section class="result-card">
+      <div class="success-mark">✓</div>
+      <p class="eyebrow">Link created</p>
+      <h1>Your note is ready.</h1>
+      <p class="lede">It will be deleted {{ expiry_label }}. Copy the link and send it privately.</p>
+      <div class="link-box"><input id="note-link" type="text" value="{{ note_url }}" readonly aria-label="Private note link"><button class="button primary copy-button" type="button" data-copy-target="note-link">Copy link</button></div>
+      <p class="caution">Anyone who has this link can read the note. Keep it out of public places.</p>
+      <a class="text-link" href="{{ url_for('home') }}">← Create another note</a>
+    </section>
+    <footer>QuietPaste is a demo project. Do not use it for passwords or highly sensitive information.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+notes.db
+notes.db-shm
+notes.db-wal

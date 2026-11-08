@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151f">
+  <title>QuietPaste — private notes that disappear</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">Q</span> QuietPaste</a>
+      <span class="top-note">No account. No inbox. Just a link.</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">A little privacy, built in</p>
+      <h1>Share a note.<br><span>Let it disappear.</span></h1>
+      <p class="lede">Paste text or code, choose when it should expire, and share the private link with someone you trust.</p>
+    </section>
+
+    <form class="editor-card" action="{{ url_for('create_note') }}" method="post">
+      {% if error %}<div class="alert" role="alert">{{ error }}</div>{% endif %}
+      <div class="editor-head">
+        <label for="body">Your note</label>
+        <span class="language-hint">Plain text or code</span>
+      </div>
+      <textarea id="body" name="body" maxlength="{{ max_characters }}" placeholder="Write or paste something here…" required autofocus></textarea>
+      <div class="editor-foot"><span>Up to {{ '{:,}'.format(max_characters) }} characters</span><span id="count">0 / {{ '{:,}'.format(max_characters) }}</span></div>
+      <div class="form-bottom">
+        <fieldset>
+          <legend>Delete note</legend>
+          <label class="choice"><input type="radio" name="expiry" value="10m" checked><span>After 10 minutes</span></label>
+          <label class="choice"><input type="radio" name="expiry" value="1h"><span>After 1 hour</span></label>
+          <label class="choice"><input type="radio" name="expiry" value="once"><span>After one view</span></label>
+        </fieldset>
+        <button class="button primary" type="submit">Create private link <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+
+    <section class="features" aria-label="How it works">
+      <article><span class="feature-icon">⌁</span><h2>Hard to guess</h2><p>Each note gets a random, private URL.</p></article>
+      <article><span class="feature-icon">◷</span><h2>Self-destructing</h2><p>Pick a time limit or a one-time view.</p></article>
+      <article><span class="feature-icon">&lt;/&gt;</span><h2>Text stays text</h2><p>Code and formatting are displayed safely.</p></article>
+    </section>
+    <footer>QuietPaste is a demo project. Anyone with your link can read the note.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

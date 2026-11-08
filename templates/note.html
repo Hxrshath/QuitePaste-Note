@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151f">
+  <title>Private note — QuietPaste</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell narrow">
+    <header class="topbar"><a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">Q</span> QuietPaste</a><span class="top-note">Private note</span></header>
+    <section class="note-card">
+      {% if one_time %}<div class="alert info"><strong>One-time note:</strong> it has now been deleted from the database.</div>{% endif %}
+      <div class="editor-head"><h1>Shared note</h1><button class="button subtle copy-button" type="button" data-copy-target="note-body">Copy text</button></div>
+      <pre id="note-body" class="note-body">{{ body }}</pre>
+      <a class="text-link" href="{{ url_for('home') }}">Create your own private note →</a>
+    </section>
+    <footer>Keep the link private. Anyone who has it can read this note.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

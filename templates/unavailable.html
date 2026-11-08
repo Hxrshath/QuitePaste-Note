@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151f">
+  <title>Note unavailable — QuietPaste</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell narrow">
+    <header class="topbar"><a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">Q</span> QuietPaste</a></header>
+    <section class="result-card">
+      <div class="expired-mark">×</div>
+      <p class="eyebrow">Nothing to see here</p>
+      <h1>This note is unavailable.</h1>
+      <p class="lede">It may have expired, already been viewed, or the link may be incorrect.</p>
+      <a class="button primary inline-button" href="{{ url_for('home') }}">Create a new note</a>
+    </section>
+    <footer>Notes are automatically removed after their chosen expiration.</footer>
+  </main>
+</body>
+</html>
